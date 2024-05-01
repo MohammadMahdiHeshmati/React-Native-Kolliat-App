@@ -1,6 +1,6 @@
 import { View, Text, ScrollView } from "react-native";
 import React from "react";
-import ItemComponent from "./ItemComponent";
+import ItemComponent from "../components/ItemComponent";
 
 const PublicPage = () => {
   return (

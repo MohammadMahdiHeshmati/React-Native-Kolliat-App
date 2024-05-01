@@ -2,7 +2,7 @@ import { View, Text, TextInput, ScrollView } from "react-native";
 import React, { useRef } from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { useFocusEffect } from "@react-navigation/native";
-import ItemComponent from "./ItemComponent";
+import ItemComponent from "../components/ItemComponent";
 
 const Search = () => {
   const inputRef = useRef(null);
