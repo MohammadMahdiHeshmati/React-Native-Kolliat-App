@@ -3,10 +3,12 @@ import { I18nManager, View } from "react-native";
 import Merge from "./app/pages/Merge";
 import { useFonts } from "expo-font";
 import Loading from "./app/pages/Loading";
+import * as Updates from "expo-updates";
 
-export default function App() {
-  I18nManager.forceRTL(true);
-  I18nManager.allowRTL(true);
+export default async function App() {
+  await I18nManager.forceRTL(true);
+  await I18nManager.allowRTL(true);
+  await Updates.reloadAsync();
 
   const [loaded] = useFonts({
     "vazir-regular": require("./assets/fonts/Vazir.ttf"),
