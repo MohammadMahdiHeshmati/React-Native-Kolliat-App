@@ -13,4 +13,5 @@ module.exports = {
     },
   },
   plugins: ["nativewind/babel"],
+  darkMode: 'class',
 };

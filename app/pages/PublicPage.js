@@ -1,22 +1,20 @@
-import { View, Text, ScrollView } from "react-native";
+import { View, ScrollView } from "react-native";
 import React from "react";
 import ItemComponent from "../components/ItemComponent";
+import Header from "./Header";
 
 const PublicPage = () => {
   return (
-    <View className="p-2 h-full">
-      <View className="p-2">
-
-      </View>
-      <View className="space-y-1">
-        <ScrollView
-          showsHorizontalScrollIndicator={false}
-          showsVerticalScrollIndicator={false}
-        >
+    <View className="h-full">
+      <Header title="فهرست" />
+      <ScrollView
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
+      >
+        <View className="p-2">
           <ItemComponent />
-          <ItemComponent />
-        </ScrollView>
-      </View>
+        </View>
+      </ScrollView>
     </View>
   );
 };
