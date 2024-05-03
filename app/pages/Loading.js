@@ -34,7 +34,7 @@ const Loading = () => {
   return (
     <View className={`w-full h-full flex justify-center items-center ${colors.bg}`}>
       <Animated.View style={styles.myView}>
-        <Ionicons name="reload-circle-outline" color={"red"} size={80} />
+        <Ionicons name="reload-circle-outline" color={"gray"} size={80} />
       </Animated.View>
     </View>
   );

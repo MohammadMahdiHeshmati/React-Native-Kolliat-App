@@ -1,6 +1,7 @@
 {
   "expo": {
-    "name": "Kolliat",
+    "name": "کلیات",
+    "displayName":"کلیات",
     "slug": "Kolliat",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -22,7 +23,7 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png"
       },
-      "package": "com.Kolliat"
+      "package": "com.nova.kolliat"
     },
     "web": {
       "favicon": "./assets/favicon.png"
