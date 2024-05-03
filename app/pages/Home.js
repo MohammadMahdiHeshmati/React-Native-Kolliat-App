@@ -71,6 +71,8 @@ const Home = () => {
             <View>
               <Image
                 className="w-full h-[145px] rounded-xl bg-cover"
+                width={"100%"}
+                height={"145px"}
                 source={require("../../assets/images/quran-image.jpeg")}
               />
               <View className="absolute inset-0 flex justify-between w-full h-full items-center flex-row p-8 z-[3]">
@@ -101,6 +103,8 @@ const Home = () => {
             <View>
               <Image
                 className="w-full h-[145px] rounded-xl bg-cover"
+                width={"100%"}
+                height={"145px"}
                 source={require("../../assets/images/mafatih-image.png")}
               />
               <View className="absolute inset-0 flex justify-between w-full h-full items-center flex-row p-8 z-[3]">
@@ -135,6 +139,8 @@ const Home = () => {
             <View>
               <Image
                 className="w-full h-[145px] rounded-xl bg-cover"
+                width={"100%"}
+                height={"145px"}
                 source={require("../../assets/images/adeeieh-image.jpg")}
               />
               <View className="absolute inset-0 flex justify-between w-full h-full items-center flex-row p-8 z-[3]">
@@ -165,6 +171,8 @@ const Home = () => {
             <View>
               <Image
                 className="w-full h-[145px] rounded-xl bg-cover"
+                width={"100%"}
+                height={"145px"}
                 source={require("../../assets/images/shohada-image.jpg")}
               />
               <View className="absolute inset-0 flex justify-between w-full h-full items-center flex-row p-8 z-[3]">
@@ -202,6 +210,8 @@ const Home = () => {
             <View>
               <Image
                 className="w-full h-[145px] rounded-xl bg-cover"
+                width={"100%"}
+                height={"145px"}
                 source={require("../../assets/images/ziaratgah-image.jpg")}
               />
               <View className="absolute inset-0 flex justify-between w-full h-full items-center flex-row p-8 z-[3]">
@@ -216,10 +226,12 @@ const Home = () => {
             </View>
           </TouchableOpacity>
           <View className="flex flex-row justify-center items-center gap-x-2 pb-2">
-            <TouchableOpacity>
-              <View className="relative">
+            <TouchableOpacity className="flex-1">
+              <View className="w-full relative">
                 <Image
-                  className="w-[170px] h-[145px] rounded-xl bg-cover"
+                  className="w-full h-[145px] rounded-xl bg-cover"
+                  width={"100%"}
+                  height={"145px"}
                   source={require("../../assets/images/amoozesh-namaz-image.jpg")}
                 />
                 <View
@@ -245,10 +257,12 @@ const Home = () => {
                 </View>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity>
-              <View className="relative">
+            <TouchableOpacity className="flex-1">
+              <View className="w-full relative">
                 <Image
-                  className="w-[170px] h-[145px] rounded-xl bg-cover"
+                  className="w-full h-[145px] rounded-xl bg-cover"
+                  width={"100%"}
+                  height={"145px"}
                   source={require("../../assets/images/azan-image.jpeg")}
                 />
                 <View

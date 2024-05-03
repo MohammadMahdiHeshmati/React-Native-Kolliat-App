@@ -19,6 +19,8 @@ const ItemComponent = () => {
       >
         <Image
           className="w-[65px] h-[65px] rounded-full bg-cover"
+          width={"65px"}
+          height={"65px"}
           source={require("../../assets/images/no-image.png")}
         />
         <View>

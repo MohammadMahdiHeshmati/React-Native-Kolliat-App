@@ -17,16 +17,9 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
+    <View className="flex-1 bg-white">
       <Merge />
       <StatusBar style="auto" hidden />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-  },
-});

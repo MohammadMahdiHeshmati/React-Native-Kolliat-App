@@ -20,7 +20,9 @@ const ShownItem = () => {
       >
         <View className="p-2">
           <Image
-            className="w-full h-[200px] bg-cover rounded-lg drop-shadow-sm shadow-sm"
+            className="w-full h-52 bg-cover rounded-lg drop-shadow-sm shadow-sm"
+            width={"100%"}
+            height={"208px"}
             source={require("../../assets/images/ziaratgah-image.jpg")}
           />
         </View>
