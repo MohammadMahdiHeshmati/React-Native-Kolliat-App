@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { I18nManager, StyleSheet, Text, View } from "react-native";
+import { I18nManager, View } from "react-native";
 import Merge from "./app/pages/Merge";
 import { useFonts } from "expo-font";
 import Loading from "./app/pages/Loading";
@@ -17,7 +17,7 @@ export default function App() {
   }
 
   return (
-    <View className="flex-1 bg-white">
+    <View dir="rtl" className="flex-1 bg-white">
       <Merge />
       <StatusBar style="auto" hidden />
     </View>

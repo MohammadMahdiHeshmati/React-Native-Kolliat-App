@@ -8,11 +8,15 @@ import Home from "./Home";
 import Search from "./Search";
 import ShownItem from "./ShownItem";
 import PublicPage from "./PublicPage";
+import { I18nManager } from "react-native";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const TabComponent = () => {
+  I18nManager.forceRTL(true);
+  I18nManager.allowRTL(true);
+
   const { colorScheme } = useColorScheme();
   const colors = {
     bg: colorScheme === "dark" ? "rgb(30, 41, 59)" : "#FFF",
