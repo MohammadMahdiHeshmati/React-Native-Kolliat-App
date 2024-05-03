@@ -1,19 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, TouchableOpacity, Image, Text, ScrollView } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
 import { useColorScheme } from "nativewind";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Home = () => {
   const navigation = useNavigation();
   const { colorScheme, toggleColorScheme } = useColorScheme();
 
+  useEffect(() => {
+    const _storeData = async () => {
+      try {
+        await AsyncStorage.setItem(
+          'theme',
+          colorScheme,
+        );
+      } catch (error) {}
+    };
+    _storeData()
+  },[colorScheme])
+
+  const colors = {
+    bg: colorScheme === "dark" ? "bg-slate-900" : "text-white",
+    border: colorScheme === "dark" ? "border-slate-600" : "border-gray-300",
+    search: colorScheme === "dark" ? "bg-slate-700" : "bg-gray-200",
+  };
+  
   return (
-    <View className="h-full bg-white dark:bg-slate-800">
+    <View className={`h-full ${colors.bg}`}>
       <View className="flex flex-row justify-start items-center gap-1 p-2">
         <TouchableOpacity onPress={toggleColorScheme}>
-          <View className="border border-gray-300 rounded-full p-1.5">
+          <View className={`border rounded-full p-1.5 ${colors.border}`}>
             {colorScheme === "dark" ? (
               <Ionicons name="sunny" color={"rgb(156, 163, 175)"} size={35} />
             ) : (
@@ -26,7 +45,9 @@ const Home = () => {
           onPress={() => navigation.navigate("Search")}
         >
           <View className="p-1">
-            <View className="bg-gray-200 border h-[50px] border-gray-300 rounded-full relative p-3">
+            <View
+              className={`border h-[50px] rounded-full relative p-3 ${colors.border} ${colors.search}`}
+            >
               <Text className="font-vazir text-gray-500">جستجو کنید...</Text>
               <Ionicons
                 style={{ position: "absolute", right: 8, top: 9 }}

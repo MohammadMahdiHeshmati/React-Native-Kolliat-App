@@ -1,11 +1,35 @@
 import { View, Text, ScrollView, Image } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import Header from "./Header";
+import { useFocusEffect } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const ShownItem = () => {
+  const [colors, setColors] = useState({
+    bg: "text-white",
+    text: "text-gray-600",
+    header: "bg-blue-600",
+  });
+
+  useFocusEffect(() => {
+    const _retrieveData = async () => {
+      try {
+        const value = await AsyncStorage.getItem("theme");
+        if (value !== null) {
+          setColors({
+            bg: value === "dark" ? "bg-slate-900" : "text-white",
+            text: value === "dark" ? "text-gray-200" : "text-gray-600",
+            header: value === "dark" ? "bg-slate-700" : "bg-blue-600",
+          });
+        }
+      } catch (error) {}
+    };
+    _retrieveData();
+  });
+
   return (
-    <View className="h-full">
-      <Header title="مسجد جمکران" />
+    <View className={`h-full ${colors.bg}`}>
+      <Header title="مسجد جمکران" color={colors.header} />
       <ScrollView
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
@@ -16,7 +40,9 @@ const ShownItem = () => {
             source={require("../../assets/images/ziaratgah-image.jpg")}
           />
         </View>
-        <Text className="text-base text-justify font-vazir p-3 pt-0">
+        <Text
+          className={`text-base text-justify font-vazir p-3 pt-0 ${colors.text}`}
+        >
           مسجد جمکران (نام‌های دیگر: مسجد صاحب‌الزمان، قدمگاه، حسن بن مثله) یکی
           از مشهورترین و مهم‌ترین مساجد شیعیان و منسوب به حجت بن الحسن امام
           دوازدهم شیعیان است که در محدوده محلهٔ جمکران شهر قم واقع شده‌است. این
