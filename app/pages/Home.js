@@ -1,27 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { View, TouchableOpacity, Image, Text, ScrollView } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
 import { useColorScheme } from "nativewind";
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Home = () => {
   const navigation = useNavigation();
   const { colorScheme, toggleColorScheme } = useColorScheme();
-
-  useEffect(() => {
-    const _storeData = async () => {
-      try {
-        await AsyncStorage.setItem(
-          'theme',
-          colorScheme,
-        );
-      } catch (error) {}
-    };
-    _storeData()
-  },[colorScheme])
-
   const colors = {
     bg: colorScheme === "dark" ? "bg-slate-900" : "text-white",
     border: colorScheme === "dark" ? "border-slate-600" : "border-gray-300",

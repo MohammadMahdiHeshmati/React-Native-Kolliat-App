@@ -1,19 +1,33 @@
 import React from "react";
-import Home from "./Home";
-import Ionicons from "react-native-vector-icons/Ionicons";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { useColorScheme } from "nativewind";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import Home from "./Home";
 import Search from "./Search";
-import PublicPage from "./PublicPage";
 import ShownItem from "./ShownItem";
+import PublicPage from "./PublicPage";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const TabComponent = () => {
+  const { colorScheme } = useColorScheme();
+  const colors = {
+    bg: colorScheme === "dark" ? "rgb(30, 41, 59)" : "#FFF",
+  };
+
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        tabBarStyle: {
+          borderTopColor: colors.bg,
+          backgroundColor: colors.bg,
+          height: 55,
+        },
+      }}
+    >
       <Tab.Screen
         name="Home"
         component={Home}
@@ -44,9 +58,21 @@ const Merge = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name={"HomeTabs"} component={TabComponent} options={{headerShown:false}} />
-        <Stack.Screen name={"Quran"} component={PublicPage} options={{headerShown:false}} />
-        <Stack.Screen name={"ShownItem"} component={ShownItem} options={{headerShown:false}} />
+        <Stack.Screen
+          name={"HomeTabs"}
+          component={TabComponent}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name={"Quran"}
+          component={PublicPage}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name={"ShownItem"}
+          component={ShownItem}
+          options={{ headerShown: false }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

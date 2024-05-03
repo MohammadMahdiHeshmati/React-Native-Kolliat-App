@@ -1,40 +1,30 @@
+import React from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
-import React, { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
+import { useColorScheme } from "nativewind";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import { useFocusEffect, useNavigation } from "@react-navigation/native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const ItemComponent = () => {
   const navigation = useNavigation();
-  const [colors, setColors] = useState({
-    bg: "text-white",
-    text: "text-gray-600",
-  });
-
-  useFocusEffect(() => {
-    const _retrieveData = async () => {
-      try {
-        const value = await AsyncStorage.getItem("theme");
-        if (value !== null) {
-          setColors({
-            bg: value === "dark" ? "bg-slate-700" : "bg-white",
-            text: value === "dark" ? "text-gray-100" : "text-gray-600",
-          });
-        }
-      } catch (error) {}
-    };
-    _retrieveData();
-  });
+  const { colorScheme } = useColorScheme();
+  const colors = {
+    bg: colorScheme === "dark" ? "bg-slate-700" : "bg-white",
+    text: colorScheme === "dark" ? "text-gray-100" : "text-gray-600",
+  };
 
   return (
     <TouchableOpacity onPress={() => navigation.navigate("ShownItem")}>
-      <View className={`w-full drop-shadow-lg shadow-lg p-3 rounded-lg flex flex-row items-center justify-start mb-2 ${colors.bg}`}>
+      <View
+        className={`w-full drop-shadow-lg shadow-lg p-3 rounded-lg flex flex-row items-center justify-start mb-2 ${colors.bg}`}
+      >
         <Image
           className="w-[65px] h-[65px] rounded-full bg-cover"
           source={require("../../assets/images/no-image.png")}
         />
         <View>
-          <Text className={`mx-3 font-vazir text-lg ${colors.text}`}>عنوان</Text>
+          <Text className={`mx-3 font-vazir text-lg ${colors.text}`}>
+            عنوان
+          </Text>
           <Text className={`mx-3 font-vazir text-xs ${colors.text}`}>
             دسته بندی
           </Text>

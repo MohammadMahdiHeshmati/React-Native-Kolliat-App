@@ -1,36 +1,22 @@
 import { View, Text, TextInput, ScrollView } from "react-native";
-import React, {  useRef, useState } from "react";
+import React, { useRef } from "react";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { useFocusEffect } from "@react-navigation/native";
 import ItemComponent from "../components/ItemComponent";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useColorScheme } from "nativewind";
 
 const Search = () => {
   const inputRef = useRef(null);
-  const [colors, setColors] = useState({
-    bg: "text-white",
-    border: "border-gray-300",
-    search: "bg-gray-200",
-    text: "text-gray-500",
-  });
+  const { colorScheme } = useColorScheme();
+  const colors = {
+    bg: colorScheme === "dark" ? "bg-slate-900" : "text-white",
+    border: colorScheme === "dark" ? "border-slate-600" : "border-gray-300",
+    search: colorScheme === "dark" ? "bg-slate-700" : "bg-gray-200",
+    text: colorScheme === "dark" ? "text-gray-100" : "text-gray-500",
+  };
 
   useFocusEffect(() => {
     // inputRef.current.focus();
-
-    const _retrieveData = async () => {
-      try {
-        const value = await AsyncStorage.getItem("theme");
-        if (value !== null) {
-          setColors({
-            bg: value === "dark" ? "bg-slate-900" : "text-white",
-            border: value === "dark" ? "border-slate-600" : "border-gray-300",
-            search: value === "dark" ? "bg-slate-700" : "bg-gray-200",
-            text: value === "dark" ? "text-gray-100" : "text-gray-500",
-          });
-        }
-      } catch (error) {}
-    };
-    _retrieveData();
   });
 
   return (

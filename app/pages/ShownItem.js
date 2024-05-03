@@ -1,31 +1,15 @@
+import React from "react";
 import { View, Text, ScrollView, Image } from "react-native";
-import React, { useState } from "react";
+import { useColorScheme } from "nativewind";
 import Header from "./Header";
-import { useFocusEffect } from "@react-navigation/native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const ShownItem = () => {
-  const [colors, setColors] = useState({
-    bg: "text-white",
-    text: "text-gray-600",
-    header: "bg-blue-600",
-  });
-
-  useFocusEffect(() => {
-    const _retrieveData = async () => {
-      try {
-        const value = await AsyncStorage.getItem("theme");
-        if (value !== null) {
-          setColors({
-            bg: value === "dark" ? "bg-slate-900" : "text-white",
-            text: value === "dark" ? "text-gray-200" : "text-gray-600",
-            header: value === "dark" ? "bg-slate-700" : "bg-blue-600",
-          });
-        }
-      } catch (error) {}
-    };
-    _retrieveData();
-  });
+  const { colorScheme } = useColorScheme();
+  const colors = {
+    bg: colorScheme === "dark" ? "bg-slate-900" : "text-white",
+    text: colorScheme === "dark" ? "text-gray-200" : "text-gray-600",
+    header: colorScheme === "dark" ? "bg-slate-700" : "bg-blue-600",
+  };
 
   return (
     <View className={`h-full ${colors.bg}`}>
