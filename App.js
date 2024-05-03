@@ -1,14 +1,15 @@
 import { StatusBar } from "expo-status-bar";
 import { I18nManager, View } from "react-native";
-import Merge from "./app/pages/Merge";
 import { useFonts } from "expo-font";
+import { useEffect } from "react";
+import Merge from "./app/pages/Merge";
 import Loading from "./app/pages/Loading";
-import * as Updates from "expo-updates";
 
-export default async function App() {
-  await I18nManager.forceRTL(true);
-  await I18nManager.allowRTL(true);
-  await Updates.reloadAsync();
+export default function App() {
+  useEffect(() => {
+    I18nManager.forceRTL(true);
+    I18nManager.allowRTL(true);
+  }, []);
 
   const [loaded] = useFonts({
     "vazir-regular": require("./assets/fonts/Vazir.ttf"),
