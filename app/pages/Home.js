@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, TouchableOpacity, Image, Text, ScrollView } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
 import { useColorScheme } from "nativewind";
+import * as db from '../db/db.js';
 
 const Home = () => {
   const navigation = useNavigation();
@@ -13,7 +14,7 @@ const Home = () => {
     border: colorScheme === "dark" ? "border-slate-600" : "border-gray-300",
     search: colorScheme === "dark" ? "bg-slate-700" : "bg-gray-200",
   };
-  
+
   return (
     <View className={`h-full ${colors.bg}`}>
       <View className="flex flex-row justify-start items-center gap-1 p-2">
@@ -69,18 +70,18 @@ const Home = () => {
               }}
             ></LinearGradient>
             <View>
+            <View className="absolute inset-0 flex justify-between w-full h-full items-center flex-row p-8 z-[3]">
+                <Text className="text-xl font-vazir text-black bg-white p-px px-3 rounded-full">
+                  قرآن
+                </Text>
+                <Ionicons name="arrow-back-circle" color={"#fff"} size={40} />
+              </View>
               <Image
                 className="w-full h-[145px] rounded-xl bg-cover"
                 width={"100%"}
                 height={"145px"}
                 source={require("../../assets/images/quran-image.jpeg")}
               />
-              <View className="absolute inset-0 flex justify-between w-full h-full items-center flex-row p-8 z-[3]">
-                <Text className="text-xl font-vazir text-black bg-white p-px px-3 rounded-full">
-                  قرآن
-                </Text>
-                <Ionicons name="arrow-back-circle" color={"#fff"} size={40} />
-              </View>
             </View>
           </TouchableOpacity>
           <TouchableOpacity>
@@ -101,13 +102,7 @@ const Home = () => {
               }}
             ></LinearGradient>
             <View>
-              <Image
-                className="w-full h-[145px] rounded-xl bg-cover"
-                width={"100%"}
-                height={"145px"}
-                source={require("../../assets/images/mafatih-image.png")}
-              />
-              <View className="absolute inset-0 flex justify-between w-full h-full items-center flex-row p-8 z-[3]">
+            <View className="absolute inset-0 flex justify-between w-full h-full items-center flex-row p-8 z-[3]">
                 <Ionicons
                   name="arrow-forward-circle"
                   color={"#fff"}
@@ -117,6 +112,12 @@ const Home = () => {
                   مفاتیح
                 </Text>
               </View>
+              <Image
+                className="w-full h-[145px] rounded-xl bg-cover"
+                width={"100%"}
+                height={"145px"}
+                source={require("../../assets/images/mafatih-image.png")}
+              />
             </View>
           </TouchableOpacity>
           <TouchableOpacity>
