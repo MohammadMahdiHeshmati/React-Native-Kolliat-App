@@ -15,18 +15,20 @@ const Other = () => {
     <View className={`h-full ${colors.bg}`}>
       <View className="flex flex-row justify-center items-center mt-16">
         <View>
-          <Ionicons name="sparkles" color={colors.icon} size={30} />
-        </View>
-        <View>
           <Ionicons name="sparkles" color={colors.icon} size={50} />
           <Ionicons name="sparkles" color={colors.icon} size={40} />
+        </View>
+        <View>
+          <Ionicons name="sparkles" color={colors.icon} size={30} />
         </View>
       </View>
       <View className="text-center space-y-6 p-5 py-8">
         <Text className={`text-center text-2xl ${colors.text}`}>
           سخنی با استفاده کنندگان
         </Text>
-        <Text className={`text-justify text-xl ${colors.text}`}>
+        <Text
+          className={`text-xl text-center ${colors.text}`}
+        >
           این اپلیکیشن فعلا در نسخه اول ارائه شده و طراحی اکثر برنامه به اتمام
           رسیده اما به دلیل کوتاه بودن زمان ثبت نام ما تا زمان ارسال اثار هنوز
           دیتای کامل قران و مفاتیح درون دیتابیس ما ریخته نشده و از این جهت قفل
@@ -34,7 +36,7 @@ const Other = () => {
           نمایش قرار داده شده. امیدواریم به لطف و فضل خداوند بتوانیم در زمان
           دیگری این اپلیکیشن را تکمیل و آن را در دسترس عموم قرار دهیم.
         </Text>
-        <Text className={`text-justify text-xl ${colors.text}`}>
+        <Text className={`text-right text-xl ${colors.text}`}>
           و من الله توفیق.
         </Text>
       </View>

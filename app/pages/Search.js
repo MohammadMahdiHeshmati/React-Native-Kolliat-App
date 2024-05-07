@@ -55,7 +55,7 @@ const Search = () => {
             placeholder="جستجو کنید ..."
           />
           <Ionicons
-            style={{ position: "absolute", right: 10, top: 11 }}
+            style={{ position: "absolute", left: 10, top: 11 }}
             name="search"
             color={"rgb(156, 163, 175)"}
             size={30}
@@ -65,7 +65,7 @@ const Search = () => {
       <View className="space-y-1">
         <View className="p-1">
           {search.length > 0 && (
-            <Text className="font-vazir text-xs text-gray-600">
+            <Text className="font-vazir text-right text-xs text-gray-600">
               نتایج جستجو
             </Text>
           )}

@@ -50,14 +50,14 @@ const ShownItem = ({ route }) => {
         </View>
         <View className="flex flex-row justify-between items-center px-7">
           <Text className="text-base text-justify font-vazir text-orange-500">
-            {items?.category}
+            1403/02/17
           </Text>
           <Text className="text-base text-justify font-vazir text-orange-500">
-            1403/02/17
+            {items?.category}
           </Text>
         </View>
         <Text
-          className={`text-base text-justify font-vazir p-3 pt-0 ${colors.text}`}
+          className={`text-base text-center font-vazir p-3 pt-0 ${colors.text}`}
         >
           {items?.desc}
         </Text>

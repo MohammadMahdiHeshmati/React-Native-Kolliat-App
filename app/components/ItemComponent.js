@@ -17,13 +17,13 @@ const ItemComponent = ({ id, title, category, img = "no-image.png", kay }) => {
       onPress={() => navigation.navigate("ShownItem", { kay, id })}
     >
       <View
-        className={`w-full drop-shadow-lg shadow-lg p-3 rounded-lg flex flex-row items-center justify-start mb-2 ${colors.bg}`}
+        className={`w-full drop-shadow-lg shadow-lg p-3 rounded-lg flex flex-row items-center justify-end mb-2 ${colors.bg}`}
       >
-        <Image
-          className="w-[65px] h-[65px] rounded-full bg-cover"
-          width={"65px"}
-          height={"65px"}
-          source={img}
+        <Ionicons
+          style={{ position: "absolute", left: 10, top: 27 }}
+          name="arrow-back-circle"
+          color={"rgb(156, 163, 175)"}
+          size={35}
         />
         <View>
           <Text className={`mx-3 font-vazir text-lg ${colors.text}`}>
@@ -33,11 +33,11 @@ const ItemComponent = ({ id, title, category, img = "no-image.png", kay }) => {
             {category}
           </Text>
         </View>
-        <Ionicons
-          style={{ position: "absolute", right: 10, top: 27 }}
-          name="arrow-back-circle"
-          color={"rgb(156, 163, 175)"}
-          size={35}
+        <Image
+          className="w-[65px] h-[65px] rounded-full bg-cover"
+          width={"65px"}
+          height={"65px"}
+          source={img}
         />
       </View>
     </TouchableOpacity>

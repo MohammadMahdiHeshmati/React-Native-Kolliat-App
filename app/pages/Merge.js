@@ -11,6 +11,7 @@ import PublicPage from "./PublicPage";
 import Other from "./Other";
 import Namaz from "./Namaz";
 import Eghameh from "./Eghameh";
+import { I18nManager } from "react-native";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -23,6 +24,7 @@ const TabComponent = () => {
 
   return (
     <Tab.Navigator
+      initialRouteName="Home"
       screenOptions={{
         tabBarStyle: {
           borderTopColor: colors.bg,
@@ -32,13 +34,13 @@ const TabComponent = () => {
       }}
     >
       <Tab.Screen
-        name="Home"
-        component={Home}
+        name="Other"
+        component={Other}
         options={{
           tabBarShowLabel: false,
           headerShown: false,
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home" color={color} size={size} />
+            <Ionicons name="cog" color={color} size={size} />
           ),
         }}
       />
@@ -54,13 +56,13 @@ const TabComponent = () => {
         }}
       />
       <Tab.Screen
-        name="Other"
-        component={Other}
+        name="Home"
+        component={Home}
         options={{
           tabBarShowLabel: false,
           headerShown: false,
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="cog" color={color} size={size} />
+            <Ionicons name="home" color={color} size={size} />
           ),
         }}
       />
@@ -69,9 +71,12 @@ const TabComponent = () => {
 };
 
 const Merge = () => {
+  I18nManager.forceRTL(false);
+  I18nManager.allowRTL(false);
+
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="HomeTabs">
         <Stack.Screen
           name={"HomeTabs"}
           component={TabComponent}
