@@ -1,56 +1,61 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, ScrollView, Image } from "react-native";
 import { useColorScheme } from "nativewind";
 import Header from "./Header";
+import { ziaratgahDB } from "../db/ziaratgah_db";
+import { shohadaDB } from "../db/shohada_db";
+import { adeeyehDB } from "../db/adeeyeh_db";
+import { quranDB } from "../db/quran_db";
 
-const ShownItem = () => {
+const ShownItem = ({ route }) => {
   const { colorScheme } = useColorScheme();
+  const [items, setItems] = useState();
   const colors = {
     bg: colorScheme === "dark" ? "bg-slate-900" : "text-white",
     text: colorScheme === "dark" ? "text-gray-200" : "text-gray-600",
     header: colorScheme === "dark" ? "bg-slate-700" : "bg-blue-600",
   };
 
+  useEffect(() => {
+    if (route.params.kay == "ziaratgah") {
+      const findData = ziaratgahDB.find((item) => item.id === route.params.id);
+      setItems(findData);
+    } else if (route.params.kay == "shohada") {
+      const findData = shohadaDB.find((item) => item.id === route.params.id);
+      setItems(findData);
+    } else if (route.params.kay == "adeyeh") {
+      const findData = adeeyehDB.find((item) => item.id === route.params.id);
+      setItems(findData);
+    } else if (route.params.kay == "quran") {
+      const findData = quranDB.find((item) => item.id === route.params.id);
+      setItems(findData);
+    }
+  }, [route.params.kay, route.params.id]);
+  console.log(items);
   return (
     <View className={`h-full ${colors.bg}`}>
-      <Header title="مسجد جمکران" color={colors.header} />
+      <Header title={items?.title || ""} color={colors.header} />
       <ScrollView
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
+        className="space-y-2"
       >
         <View className="p-2">
           <Image
             className="w-full h-52 bg-cover rounded-lg drop-shadow-sm shadow-sm"
             width={"100%"}
-            height={"208px"}
-            source={require("../../assets/images/ziaratgah-image.jpg")}
+            height={"200px"}
+            source={items?.img}
           />
+        </View>
+        <View className="flex flex-row justify-between items-center px-7">
+          <Text className="text-base text-justify font-vazir text-orange-500">{items?.category}</Text>
+          <Text className="text-base text-justify font-vazir text-orange-500">1403/02/17</Text>
         </View>
         <Text
           className={`text-base text-justify font-vazir p-3 pt-0 ${colors.text}`}
         >
-          مسجد جمکران (نام‌های دیگر: مسجد صاحب‌الزمان، قدمگاه، حسن بن مثله) یکی
-          از مشهورترین و مهم‌ترین مساجد شیعیان و منسوب به حجت بن الحسن امام
-          دوازدهم شیعیان است که در محدوده محلهٔ جمکران شهر قم واقع شده‌است. این
-          مسجد، به خاطر قرارداشتن در این محله، به مسجد جمکران شهرت یافته‌است و
-          به سبب انتساب به حجت بن الحسن، مسجد صاحب‌الزمان هم نامیده می‌شود، در
-          گذشته به مسجد قدمگاه نیز مشهور بوده‌است. به گفته دانشنامه جهان اسلام
-          جمکران در گذشته روستای مهمی بوده و نام آن در کتاب تاریخ قم بارها تکرار
-          شده‌است.[۱] این مسجد سابقه‌ای بیش از ۱۰۰۰ سال دارد و در سده اخیر در پی
-          توجه شماری از علمای شیعه، به یکی از زیارتگاه‌های مهم ایران تبدیل شده،
-          و آداب و رسوم و باورهای خاصی پیرامون آن شکل گرفته‌است.[۲] این مسجد
-          دارای ساختمان اداری، هیئت امنا، دایره انتظامات، دفتر ثبت کرامات،
-          انتشارات کتاب جمکران، واحد تحقیقات، وا هٔ جمکران شهر قم واقع شده‌است.
-          این مسجد، به خاطر قرارداشتن در این محله، به مسجد جمکران شهرت یافته‌است
-          و به سبب انتساب به حجت بن الحسن، مسجد صاحب‌الزمان هم نامیده می‌شود، در
-          گذشته به مسجد قدمگاه نیز مشهور بوده‌است. به گفته دانشنامه جهان اسلام
-          جمکران در گذشته روستای مهمی بوده و نام آن در کتاب تاریخ قم بارها تکرار
-          شده‌است.[۱] این مسجد سابقه‌ای بیش از ۱۰۰۰ سال دارد و در سده اخیر در پی
-          توجه شماری از علمای شیعه، به یکی از زیارتگاه‌های مهم ایران تبدیل شده،
-          و آداب و رسوم و باورهای خاصی پیرامون آن شکل گرفته‌است.[۲] این مسجد
-          دارای ساختمان اداری، هیئت امنا، دایره انتظامات، دفتر ثبت کرامات،
-          انتشارات کتاب جمکران، واحد تحقیقات، واحد ارشاد و کتابخانه تخصصی
-          است.[۳]حد ارشاد و کتابخانه تخصصی است.[۳]
+          {items?.desc}
         </Text>
       </ScrollView>
     </View>

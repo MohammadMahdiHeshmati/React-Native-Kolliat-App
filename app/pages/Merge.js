@@ -8,6 +8,9 @@ import Home from "./Home";
 import Search from "./Search";
 import ShownItem from "./ShownItem";
 import PublicPage from "./PublicPage";
+import Other from "./Other";
+import Namaz from "./Namaz";
+import Eghameh from "./Eghameh";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -50,6 +53,17 @@ const TabComponent = () => {
           ),
         }}
       />
+      <Tab.Screen
+        name="Other"
+        component={Other}
+        options={{
+          tabBarShowLabel: false,
+          headerShown: false,
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="cog" color={color} size={size} />
+          ),
+        }}
+      />
     </Tab.Navigator>
   );
 };
@@ -64,8 +78,18 @@ const Merge = () => {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name={"Quran"}
+          name={"PublicPage"}
           component={PublicPage}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name={"Namaz"}
+          component={Namaz}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name={"Eghameh"}
+          component={Eghameh}
           options={{ headerShown: false }}
         />
         <Stack.Screen

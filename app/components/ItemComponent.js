@@ -4,7 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import { useColorScheme } from "nativewind";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
-const ItemComponent = () => {
+const ItemComponent = ({ id, title, category, img = "no-image.png", kay }) => {
   const navigation = useNavigation();
   const { colorScheme } = useColorScheme();
   const colors = {
@@ -13,7 +13,9 @@ const ItemComponent = () => {
   };
 
   return (
-    <TouchableOpacity onPress={() => navigation.navigate("ShownItem")}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate("ShownItem", { kay, id })}
+    >
       <View
         className={`w-full drop-shadow-lg shadow-lg p-3 rounded-lg flex flex-row items-center justify-start mb-2 ${colors.bg}`}
       >
@@ -21,14 +23,14 @@ const ItemComponent = () => {
           className="w-[65px] h-[65px] rounded-full bg-cover"
           width={"65px"}
           height={"65px"}
-          source={require("../../assets/images/no-image.png")}
+          source={img}
         />
         <View>
           <Text className={`mx-3 font-vazir text-lg ${colors.text}`}>
-            عنوان
+            {title}
           </Text>
           <Text className={`mx-3 font-vazir text-xs ${colors.text}`}>
-            دسته بندی
+            {category}
           </Text>
         </View>
         <Ionicons

@@ -4,7 +4,6 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
 import { useColorScheme } from "nativewind";
-import * as db from '../db/db.js';
 
 const Home = () => {
   const navigation = useNavigation();
@@ -52,7 +51,9 @@ const Home = () => {
         className="h-full space-y-2 px-2"
       >
         <View className="space-y-2">
-          <TouchableOpacity onPress={() => navigation.navigate("Quran")}>
+          <TouchableOpacity  onPress={() =>
+              navigation.navigate("PublicPage", { item: "quran" })
+            }>
             <LinearGradient
               colors={["rgba(0,0,0,0.7)", "rgba(0,0,0,0.1)"]}
               start={{ x: 0, y: 0 }}
@@ -70,21 +71,21 @@ const Home = () => {
               }}
             ></LinearGradient>
             <View>
-            <View className="absolute inset-0 flex justify-between w-full h-full items-center flex-row p-8 z-[3]">
-                <Text className="text-xl font-vazir text-black bg-white p-px px-3 rounded-full">
-                  قرآن
-                </Text>
-                <Ionicons name="arrow-back-circle" color={"#fff"} size={40} />
-              </View>
               <Image
                 className="w-full h-[145px] rounded-xl bg-cover"
                 width={"100%"}
                 height={"145px"}
                 source={require("../../assets/images/quran-image.jpeg")}
               />
+              <View className="absolute inset-0 flex justify-between w-full h-full items-center flex-row p-8 z-[3]">
+                <Text className="text-xl font-vazir text-black bg-white p-px px-3 rounded-full">
+                  قرآن
+                </Text>
+                <Ionicons name="arrow-back-circle" color={"#fff"} size={40} />
+              </View>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate("Other")}>
             <LinearGradient
               colors={["rgba(0,0,0,0.7)", "rgba(0,0,0,0.1)"]}
               start={{ x: 1, y: 1 }}
@@ -102,7 +103,13 @@ const Home = () => {
               }}
             ></LinearGradient>
             <View>
-            <View className="absolute inset-0 flex justify-between w-full h-full items-center flex-row p-8 z-[3]">
+              <Image
+                className="w-full h-[145px] rounded-xl bg-cover"
+                width={"100%"}
+                height={"145px"}
+                source={require("../../assets/images/mafatih-image.png")}
+              />
+              <View className="absolute inset-0 flex justify-between w-full h-full items-center flex-row p-8 z-[3]">
                 <Ionicons
                   name="arrow-forward-circle"
                   color={"#fff"}
@@ -112,15 +119,16 @@ const Home = () => {
                   مفاتیح
                 </Text>
               </View>
-              <Image
-                className="w-full h-[145px] rounded-xl bg-cover"
-                width={"100%"}
-                height={"145px"}
-                source={require("../../assets/images/mafatih-image.png")}
-              />
+              <View className="absolute inset-0 flex justify-center bg-black/60 w-full h-full items-center flex-row rounded-lg p-8 z-[5]">
+                <Ionicons name="lock-closed-sharp" color={"#fff"} size={40} />
+              </View>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate("PublicPage", { item: "adeyeh" })
+            }
+          >
             <LinearGradient
               colors={["rgba(0,0,0,0.7)", "rgba(0,0,0,0.1)"]}
               start={{ x: 0, y: 0 }}
@@ -152,7 +160,11 @@ const Home = () => {
               </View>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate("PublicPage", { item: "shohada" })
+            }
+          >
             <LinearGradient
               colors={["rgba(0,0,0,0.7)", "rgba(0,0,0,0.1)"]}
               start={{ x: 1, y: 1 }}
@@ -186,12 +198,13 @@ const Home = () => {
                   شهدا
                 </Text>
               </View>
-              <View className="absolute inset-0 flex justify-center bg-black/60 w-full h-full items-center flex-row rounded-lg p-8 z-[5]">
-                <Ionicons name="lock-closed-sharp" color={"#fff"} size={40} />
-              </View>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate("PublicPage", { item: "ziaratgah" })
+            }
+          >
             <LinearGradient
               colors={["rgba(0,0,0,0.7)", "rgba(0,0,0,0.1)"]}
               start={{ x: 0, y: 0 }}
@@ -221,13 +234,13 @@ const Home = () => {
                 </Text>
                 <Ionicons name="arrow-back-circle" color={"#fff"} size={40} />
               </View>
-              <View className="absolute inset-0 flex justify-center bg-black/60 w-full h-full items-center flex-row rounded-lg p-8 z-[5]">
-                <Ionicons name="lock-closed-sharp" color={"#fff"} size={40} />
-              </View>
             </View>
           </TouchableOpacity>
           <View className="flex flex-row justify-center items-center gap-x-2 pb-2">
-            <TouchableOpacity className="flex-1">
+            <TouchableOpacity
+              className="flex-1"
+              onPress={() => navigation.navigate("Namaz")}
+            >
               <View className="w-full relative">
                 <Image
                   className="w-full h-[145px] rounded-xl bg-cover"
@@ -258,7 +271,10 @@ const Home = () => {
                 </View>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity className="flex-1">
+            <TouchableOpacity
+              className="flex-1"
+              onPress={() => navigation.navigate("Eghameh")}
+            >
               <View className="w-full relative">
                 <Image
                   className="w-full h-[145px] rounded-xl bg-cover"
@@ -284,7 +300,7 @@ const Home = () => {
                   }}
                 >
                   <Text className="text-xl font-vazir text-center text-white p-2">
-                    اذان و اقامه
+                    آموزش اقامه
                   </Text>
                 </View>
               </View>
