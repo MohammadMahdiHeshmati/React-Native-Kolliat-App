@@ -31,7 +31,7 @@ const ShownItem = ({ route }) => {
       setItems(findData);
     }
   }, [route.params.kay, route.params.id]);
-  console.log(items);
+
   return (
     <View className={`h-full ${colors.bg}`}>
       <Header title={items?.title || ""} color={colors.header} />
@@ -49,8 +49,12 @@ const ShownItem = ({ route }) => {
           />
         </View>
         <View className="flex flex-row justify-between items-center px-7">
-          <Text className="text-base text-justify font-vazir text-orange-500">{items?.category}</Text>
-          <Text className="text-base text-justify font-vazir text-orange-500">1403/02/17</Text>
+          <Text className="text-base text-justify font-vazir text-orange-500">
+            {items?.category}
+          </Text>
+          <Text className="text-base text-justify font-vazir text-orange-500">
+            1403/02/17
+          </Text>
         </View>
         <Text
           className={`text-base text-justify font-vazir p-3 pt-0 ${colors.text}`}
