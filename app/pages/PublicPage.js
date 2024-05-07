@@ -24,7 +24,7 @@ const PublicPage = ({ route }) => {
       setItems(ziaratgahDB);
     } else if (route.params.item == "shohada") {
       setItems(shohadaDB);
-    }else if (route.params.item == "adeyeh") {
+    } else if (route.params.item == "adeyeh") {
       setItems(adeeyehDB);
     } else if (route.params.item == "quran") {
       setItems(quranDB);
@@ -39,8 +39,9 @@ const PublicPage = ({ route }) => {
         showsVerticalScrollIndicator={false}
       >
         <View className="p-2">
-          {items?.map((item) => (
+          {items?.map((item, index) => (
             <ItemComponent
+              key={index + 1}
               id={item.id}
               title={item.title}
               category={item.category}
